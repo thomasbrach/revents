@@ -25,14 +25,10 @@ const NavBar = ({ setFormOpen }) => {
           Re-vents
         </Menu.Item>
         <Menu.Item name="Events" exact as={NavLink} to="/events" />
+        <Menu.Item name="Sandbox" exact as={NavLink} to="/sandbox" />
         {authenticated && (
           <Menu.Item as={NavLink} exact to="/createEvent">
-            <Button
-              onClick={() => setFormOpen(true)}
-              positive
-              inverted
-              content="Create Event"
-            />
+            <Button positive inverted content="Create Event" />
           </Menu.Item>
         )}
         {authenticated ? (
