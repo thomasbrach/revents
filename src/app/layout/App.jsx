@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, useLocation } from "react-router-dom";
+import { Route, useLocation } from "react-router-dom";
 import { Container } from "semantic-ui-react";
 import EventDashboard from "../../features/events/eventDashboard/EventDashboard";
 import EventDetailedPage from "../../features/events/eventDetailed/EventDetailedPage";
