@@ -7,35 +7,31 @@ import EventForm from "../../features/events/eventForm/EventForm";
 import HomePage from "../../features/home/HomePage";
 import NavBar from "../../features/nav/NavBar";
 import Sandbox from "../../features/sandbox/Sandbox";
-import ScrollToTop from "./ScrollToTop";
 
 const App = () => {
-  // const { key } = useLocation();
+  const { key } = useLocation();
 
   return (
     <>
-      <BrowserRouter>
-        <Route exact path="/" component={HomePage} />
-        <Route
-          path={"/(.+)"}
-          render={() => (
-            <>
-              <NavBar />
-              <ScrollToTop />
-              <Container className="main">
-                <Route exact path="/events" component={EventDashboard} />
-                <Route exact path="/sandbox" component={Sandbox} />
-                <Route path="/events/:id" component={EventDetailedPage} />
-                <Route
-                  path={["/createEvent", "/manage/:id"]}
-                  component={EventForm}
-                  // key={key}
-                />
-              </Container>
-            </>
-          )}
-        />
-      </BrowserRouter>
+      <Route exact path="/" component={HomePage} />
+      <Route
+        path={"/(.+)"}
+        render={() => (
+          <>
+            <NavBar />
+            <Container className="main">
+              <Route exact path="/events" component={EventDashboard} />
+              <Route exact path="/sandbox" component={Sandbox} />
+              <Route path="/events/:id" component={EventDetailedPage} />
+              <Route
+                path={["/createEvent", "/manage/:id"]}
+                component={EventForm}
+                key={key}
+              />
+            </Container>
+          </>
+        )}
+      />
     </>
   );
 };
