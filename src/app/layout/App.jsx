@@ -10,9 +10,15 @@ import NavBar from "../../features/nav/NavBar";
 import Sandbox from "../../features/sandbox/Sandbox";
 import { ToastContainer } from "react-toastify";
 import ErrorComponent from "../common/errors/ErrorComponent";
+import AccountPage from "../../features/auth/AccountPage";
+import { useSelector } from "react-redux";
+import LoadingComponent from "./LoadingComponent";
 
 const App = () => {
   const { key } = useLocation();
+  const { initialized } = useSelector((state) => state.async);
+
+  if (!initialized) return <LoadingComponent content="Loading app..." />;
 
   return (
     <>
@@ -34,6 +40,7 @@ const App = () => {
                 key={key}
               />
               <Route path="/error" component={ErrorComponent} />
+              <Route path="/account" component={AccountPage} />
             </Container>
           </>
         )}

@@ -2,7 +2,7 @@ const { SIGN_OUT_USER, SIGN_IN_USER } = require("./authConstants");
 
 const initialState = {
   authenticated: true,
-  currentUser: { email: "bob@test.com", photoURL: "/assets/user.png" },
+  currentUser: null,
 };
 
 const authReducer = (state = initialState, { type, payload }) => {
@@ -12,8 +12,11 @@ const authReducer = (state = initialState, { type, payload }) => {
         ...state,
         authenticated: true,
         currentUser: {
+          uid: payload.uid,
+          displayName: payload.displayName,
           email: payload.email,
-          photoURL: "/assets/user.png",
+          photoURL: payload.photoURL,
+          providerId: payload.providerData[0].providerId,
         },
       };
 
