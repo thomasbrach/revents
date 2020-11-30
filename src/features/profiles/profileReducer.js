@@ -1,11 +1,13 @@
 const {
   LISTEN_TO_CURRENT_USER_PROFILE,
   LISTEN_TO_SELECTED_USER_PROFILE,
+  LISTEN_TO_USER_PHOTOS,
 } = require("./profileConstants");
 
 const initialState = {
   currentUserProfile: null,
   selectedUserProfile: null,
+  photos: [],
 };
 
 const profileReducer = (state = initialState, { type, payload }) => {
@@ -20,6 +22,12 @@ const profileReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         selectedUserProfile: payload,
+      };
+
+    case LISTEN_TO_USER_PHOTOS:
+      return {
+        ...state,
+        photos: payload,
       };
 
     default:
