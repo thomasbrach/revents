@@ -13,7 +13,7 @@ const EventDashboard = () => {
   const dispatch = useDispatch();
   const { events } = useSelector((state) => state.event);
   const { loading } = useSelector((state) => state.async);
-  const {authenticated} = useSelector(state => state.auth)
+  const { authenticated } = useSelector((state) => state.auth);
   const [predicate, setPredicate] = useState(
     new Map([
       ["startDate", new Date()],
