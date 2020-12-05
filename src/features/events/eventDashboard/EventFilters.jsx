@@ -1,15 +1,14 @@
 import React from "react";
-import { Header, Menu } from "semantic-ui-react";
-import Calendar from "react-calendar";
-import { date } from "yup";
+import { Menu, Header } from "semantic-ui-react";
+import { Calendar } from "react-calendar";
 
-const EventFilters = ({ setPredicate, predicate, loading }) => {
+export default function EventFilters({ setPredicate, predicate, loading }) {
   return (
     <>
       <Menu vertical size="large" style={{ width: "100%" }}>
         <Header icon="filter" attached color="teal" content="Filters" />
         <Menu.Item
-          content="All events"
+          content="All Events"
           active={predicate.get("filter") === "all"}
           onClick={() => setPredicate("filter", "all")}
           disabled={loading}
@@ -22,19 +21,17 @@ const EventFilters = ({ setPredicate, predicate, loading }) => {
         />
         <Menu.Item
           content="I'm hosting"
-          active={predicate.get("filter") === "isHosting"}
-          onClick={() => setPredicate("filter", "isHosting")}
+          active={predicate.get("filter") === "isHost"}
+          onClick={() => setPredicate("filter", "isHost")}
           disabled={loading}
         />
       </Menu>
       <Header icon="calendar" attached color="teal" content="Select date" />
       <Calendar
         onChange={(date) => setPredicate("startDate", date)}
-        value={predicate.get("startDate") || new date()}
+        value={predicate.get("startDate") || new Date()}
         tileDisabled={() => loading}
       />
     </>
   );
-};
-
-export default EventFilters;
+}

@@ -1,13 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { Header, Segment, Feed } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
-import { Feed, Header, Segment } from "semantic-ui-react";
+import { useEffect } from "react";
 import {
-  firebaseObjectToArray,
   getUserFeedRef,
+  firebaseObjectToArray,
 } from "../../../app/firestore/firebaseService";
 import { listenToFeed } from "../../profiles/profileActions";
+import EventFeedItem from "./EventFeedItem";
 
-const EventsFeed = () => {
+export default function EventsFeed() {
   const dispatch = useDispatch();
   const { feed } = useSelector((state) => state.profile);
 
@@ -26,16 +28,14 @@ const EventsFeed = () => {
 
   return (
     <>
-      <Header attached color="teal" icon="newspaper" content="News Feed" />
+      <Header attached color="teal" icon="newspaper" content="News feed" />
       <Segment attached="bottom">
         <Feed>
           {feed.map((post) => (
-            <Feed.Event key={post.id} post={post} />
+            <EventFeedItem post={post} key={post.id} />
           ))}
         </Feed>
       </Segment>
     </>
   );
-};
-
-export default EventsFeed;
+}

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { format } from "date-fns";
 import { deleteEventInFirestore } from "../../../app/firestore/firestoreService";
 
-const EventListItem = ({ event }) => {
+export default function EventListItem({ event }) {
   return (
     <Segment.Group>
       <Segment>
@@ -16,7 +16,7 @@ const EventListItem = ({ event }) => {
               <Item.Header content={event.title} />
               <Item.Description>
                 Hosted by{" "}
-                <Link to={`/profile/${event.hostUid}`}>{event.hostedBy}</Link>
+                <Link to={`/profile/${event.hostUid}`}>{event.hostedBy}</Link>{" "}
               </Item.Description>
               {event.isCancelled && (
                 <Label
@@ -61,6 +61,4 @@ const EventListItem = ({ event }) => {
       </Segment>
     </Segment.Group>
   );
-};
-
-export default EventListItem;
+}
